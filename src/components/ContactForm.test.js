@@ -33,8 +33,26 @@ test('Has Last Name field', () => {
   expect(lastName).toBeInTheDocument
 })
 
-test('Has Submit button', () => {
+// This test failed
+test('Has Email field.', () => {
+  // Arrange - setup
+  render(<ContactForm />)
 
+  // Act - action
+  const email = screen.getByLabelText(/email*/i)
+
+  // Assert - what do we expect
+  expect(email).toBeInTheDocument
+})
+
+test('Has Submit button', () => {
+  // Arrange
+  render(<ContactForm />)
+
+  // Act
+  // const button = screen.getByRole('button', )
+
+  // Assert
 })
 
 test('Able to click Submit button', () => {
