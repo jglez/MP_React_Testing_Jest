@@ -1,5 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
 import ContactForm from './ContactForm'
 
 test('ContactForm renders without errors.', () => {
@@ -19,7 +21,7 @@ test('Has First Name field.', () => {
   const firstName = screen.getByLabelText(/first name*/i) // screen are query functions to find elements
 
   // Assert - what do we expect
-  expect(firstName).toBeInTheDocument
+  expect(firstName).toBeInTheDocument()
 })
 
 test('Has Last Name field', () => {
@@ -30,7 +32,7 @@ test('Has Last Name field', () => {
   const lastName = screen.getByLabelText(/last name*/i)
 
   // Assert
-  expect(lastName).toBeInTheDocument
+  expect(lastName).toBeInTheDocument()
 })
 
 // This test failed
@@ -43,7 +45,7 @@ test('Has Email field.', () => {
   const email = screen.getByLabelText(/email*/i)
 
   // Assert - what do we expect
-  expect(email).toBeInTheDocument
+  expect(email).toBeInTheDocument()
 })
 
 test('Has Message field.', () => {
@@ -54,7 +56,18 @@ test('Has Message field.', () => {
   const message = screen.getByLabelText(/message/i)
 
   // Assert - what do we expect
-  expect(message).toBeInTheDocument
+  expect(message).toBeInTheDocument()
+})
+
+test('Can type in First Name input.', () => {
+  // Arrange - setup
+  render(<ContactForm />)
+
+  // Act - action
+  userEvent.type(firstName, 'Jorge')
+
+  // Assert - what do we expect
+  console.log(firstName)
 })
 
 test('Has Submit button', () => {
@@ -62,9 +75,10 @@ test('Has Submit button', () => {
   render(<ContactForm />)
 
   // Act
-  // const button = screen.getByRole('button', )
+  const button = screen.getByRole('button', { name: /submit/i })
 
   // Assert
+  expect(button).toBeInTheDocument()
 })
 
 test('Able to click Submit button', () => {
