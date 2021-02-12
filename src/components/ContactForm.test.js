@@ -22,8 +22,15 @@ test('Has First Name field.', () => {
   expect(firstName).toBeInTheDocument
 })
 
-test('has Last Name field', () => {
+test('Has Last Name field', () => {
+  // Arrange
+  render(<ContactForm />)
 
+  // Act
+  const lastName = screen.getByLabelText(/last name*/i)
+
+  // Assert
+  expect(lastName).toBeInTheDocument
 })
 
 test('Has Submit button', () => {
