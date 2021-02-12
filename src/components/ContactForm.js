@@ -44,8 +44,9 @@ const ContactForm = () => {
           <label htmlFor="email">
             Email*
           </label>
+          {/* Incorrect id - Fixed to match */}
           <input name="email"
-            id="lastName"
+            id="email"
             placeholder="bluebill1049@hotmail.com"
             ref={register({ required: true })}
           />
