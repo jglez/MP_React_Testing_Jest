@@ -6,6 +6,9 @@ test('ContactForm renders without errors.', () => {
   render(<ContactForm />)
 })
 
+// This test failed because the input that corresponds with this
+// label had no form control.
+// I added an id value on the input and now it is passing.
 test('Has First Name field.', () => {
   // Arrange - setup
   const { debug } = render(<ContactForm />)   // render returns a sort of container of DOM
@@ -14,10 +17,9 @@ test('Has First Name field.', () => {
 
   // Act - action
   const firstName = screen.getByLabelText(/first name*/i) // screen are query functions to find elements
-  // Our test fails because we have no form control.
 
   // Assert - what do we expect
-  expect(firstname).toBeInTheDocument
+  expect(firstName).toBeInTheDocument
 })
 
 test('has Last Name field', () => {

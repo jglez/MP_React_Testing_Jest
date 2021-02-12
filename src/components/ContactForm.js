@@ -17,6 +17,7 @@ const ContactForm = () => {
           {/* Our test found that this label has no form control */}
           <label htmlFor="firstName">First Name*</label>
           <input
+            id='firstName'
             name="firstName"
             placeholder="Edd"
             ref={register({ required: true, maxLength: 3 })}
