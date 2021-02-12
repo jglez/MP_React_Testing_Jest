@@ -14,8 +14,10 @@ const ContactForm = () => {
     <div className="App">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
+          {/* Our test found that this label has no form control */}
           <label htmlFor="firstName">First Name*</label>
           <input
+            id='firstName'
             name="firstName"
             placeholder="Edd"
             ref={register({ required: true, maxLength: 3 })}
@@ -42,10 +44,11 @@ const ContactForm = () => {
           <label htmlFor="email">
             Email*
           </label>
-          <input name="email" 
-            id="lastName"
+          {/* Incorrect id - Fixed to match */}
+          <input name="email"
+            id="email"
             placeholder="bluebill1049@hotmail.com"
-            ref={register({ required: true })} 
+            ref={register({ required: true })}
           />
           {errors.email && (
             <p>Looks like there was an error: {errors.email.type}</p>
@@ -55,8 +58,8 @@ const ContactForm = () => {
           <label htmlFor="message">Message</label>
           <textarea
             name="message"
-            id="message" 
-            ref={register({ required: false })} 
+            id="message"
+            ref={register({ required: false })}
           />
         </div>
         {data && (
