@@ -34,6 +34,7 @@ test('Has Last Name field', () => {
 })
 
 // This test failed
+// Fixed Email id value
 test('Has Email field.', () => {
   // Arrange - setup
   render(<ContactForm />)
@@ -43,6 +44,17 @@ test('Has Email field.', () => {
 
   // Assert - what do we expect
   expect(email).toBeInTheDocument
+})
+
+test('Has Message field.', () => {
+  // Arrange - setup
+  render(<ContactForm />)
+
+  // Act - action
+  const message = screen.getByLabelText(/message/i)
+
+  // Assert - what do we expect
+  expect(message).toBeInTheDocument
 })
 
 test('Has Submit button', () => {
